@@ -1,16 +1,10 @@
 const db = require("../utils/database");
 
-class User {
-  constructor(name) {
-    this.name = name;
-  }
-}
-
-async function get() {
-  let getUserQuery = "SELECT * FROM user LIMIT 1";
+async function getName(id) {
+  let getUserQuery = `SELECT * FROM user WHERE id = '${id}'`;
   let user = await db.query(getUserQuery);
   let name = user[0].name;
-  return new User(name);
+  return name;
 }
 
 async function addUser(name, password) {
@@ -19,4 +13,4 @@ async function addUser(name, password) {
   db.query(addUserQuery);
 }
 
-module.exports = { get, addUser };
+module.exports = { getName, addUser };
