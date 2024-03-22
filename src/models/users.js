@@ -13,8 +13,9 @@ async function get() {
   return new User(name);
 }
 
-async function addUser(name) {
-  let addUserQuery = `INSERT INTO user (name) VALUES ('${name}');`;
+async function addUser(name, password) {
+  let addUserQuery = `INSERT INTO user (name, password)
+    VALUES ('${name}', '${password}');`;
   db.query(addUserQuery);
 }
 

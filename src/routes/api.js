@@ -4,10 +4,12 @@ const httpError = require("http-errors");
 
 const users = require("../models/users");
 
-router.post("/user/:name/", async (req, res, next) => {
-  let username = req.params.name;
+router.post("/user", async (req, res, next) => {
+  let body = req.body;
+  let name = body.name;
+  let password = body.password;
   try {
-    await users.addUser(username);
+    await users.addUser(name, password);
     res.send("OK!");
   } catch (err) {
     next(httpError(500, "Cannot add user."));

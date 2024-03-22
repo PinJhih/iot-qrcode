@@ -1,9 +1,20 @@
 const sqlite3 = require("sqlite3").verbose();
-const file = __dirname + "/../../ntcu-iot.db";
+const fs = require("fs");
+const filePath = __dirname + "/../../ntcu-iot.db";
+
+function init() {
+  const createUerTable = `CREATE TABLE IF NOT EXISTS user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    password TEXT)`;
+  query(createUerTable);
+}
+
+init();
 
 function connect() {
   return new Promise((resolve, reject) => {
-    const db = new sqlite3.Database(file, sqlite3.OPEN_READWRITE, (err) => {
+    const db = new sqlite3.Database(filePath, sqlite3.OPEN_READWRITE, (err) => {
       if (err) {
         console.error(err.message);
         reject(err);
@@ -32,14 +43,6 @@ async function query(sql) {
     });
   });
 }
-
-function init() {
-  const createTableQuery = `CREATE TABLE IF NOT EXISTS user
-    (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)`;
-  query(createTableQuery);
-}
-
-init();
 
 module.exports = {
   query,
