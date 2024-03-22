@@ -10,7 +10,18 @@ function init() {
   query(createUerTable);
 }
 
-init();
+// create file if not exist
+fs.access(filePath, fs.constants.F_OK, (err) => {
+  if (err) {
+    fs.writeFile(filePath, "", (err) => {
+      if (err) {
+        console.error("Error creating file:", err);
+      } else {
+        init();
+      }
+    });
+  }
+});
 
 function connect() {
   return new Promise((resolve, reject) => {
