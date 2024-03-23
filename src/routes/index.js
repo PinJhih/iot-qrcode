@@ -8,12 +8,16 @@ router.get("/", async (req, res) => {
   const userID = req.locals.userID;
   const username = await users.getName(userID);
   const activityList = await activities.getActivities(userID);
-  
+
   res.locals.username = username;
   res.render("index", {
     title: "Welcome to my Project!",
     activities: activityList,
   });
+});
+
+router.get("/login", async (req, res) => {
+  res.render("login");
 });
 
 module.exports = router;

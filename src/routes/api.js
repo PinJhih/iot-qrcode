@@ -5,6 +5,18 @@ const httpError = require("http-errors");
 const users = require("../models/users");
 const activities = require("../models/activities");
 
+router.post("/login", async (req, res, next) => {
+  let body = req.body;
+  let user = body.user;
+  let password = body.password;
+
+  if (users.login(user, password)) {
+    res.redirect("/");
+  } else {
+    res.redirect("/login");
+  }
+});
+
 router.post("/user", async (req, res, next) => {
   let body = req.body;
   let name = body.name;
