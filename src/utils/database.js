@@ -8,6 +8,12 @@ function init() {
     name TEXT,
     password TEXT)`;
   query(createUerTable);
+
+  const createActTable = `CREATE TABLE IF NOT EXISTS activity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    host INTEGER)`;
+  query(createActTable);
 }
 
 // create file if not exist
@@ -20,6 +26,8 @@ fs.access(filePath, fs.constants.F_OK, (err) => {
         init();
       }
     });
+  } else {
+    init();
   }
 });
 
