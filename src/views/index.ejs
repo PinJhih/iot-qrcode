@@ -10,8 +10,14 @@
   <body>
     <main>
       <h1><%= title %></h1>
-
       <h3>Hello, <%- username %>!</h3>
+
+      <h3>Your activities:</h3>
+      <ul>
+        <% activities.forEach(function(activity) { %>
+          <li><%= activity.name %></li>
+        <% }); %>
+      </ul>
     </main>
   </body>
 </html>
