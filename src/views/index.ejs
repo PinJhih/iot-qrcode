@@ -19,7 +19,13 @@
         <div class="list"><i class="fa-solid fa-gear"></i>Setting</div>
       </div>
     </div>
-    <div class="right"></div>
+    <div class="right">
+      <div class="right-header">
+        <i class="fa-regular fa-bell"></i>
+        <i class="fa-solid fa-user"></i>
+        <div class="email">User@gmail.com</div>
+      </div>
+    </div>
   </div>
 </body>
 
@@ -27,6 +33,9 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  * {
+    font-family: "Noto Sans", sans-serif;
+  }
 
   body {
     margin: 0;
@@ -58,9 +67,14 @@
     font-size: 50px;
   }
 
-  .title > i {
+  .title>i {
     color: #ffcb83;
     margin-right: 20px;
+  }
+
+  .title:hover {
+    cursor: pointer;
+    color: #ffcb83;
   }
 
   .left-list {
@@ -70,7 +84,7 @@
   .list {
     color: white;
     font-size: 25px;
-    padding: 15px 0 15px 15%;
+    padding: 15px 0 15px 20%;
   }
 
   .list:hover {
@@ -79,7 +93,7 @@
     border-left: solid 3px;
   }
 
-  .left-list > .list > i {
+  .left-list>.list>i {
     color: #ffcb83;
     margin-right: 20px;
   }
@@ -88,5 +102,24 @@
     grid-area: right;
     background-color: white;
     border-radius: 20px;
+  }
+
+  .right-header {
+    margin: 20px 20px 0;
+    display: flex;
+    justify-content: end;
+    padding: 20px;
+  }
+
+  .right-header > i {
+    color: #57419d;
+    font-size: 30px;
+    margin: 0 15px;
+  }
+  
+  .email {
+    color: black;
+    font-size: 20px;
+    margin: 0 15px;
   }
 </style>
