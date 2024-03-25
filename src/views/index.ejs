@@ -67,8 +67,8 @@
   .container {
     height: 100vh;
     display: grid;
-    grid-template-rows: 5% 90% 5%;
-    grid-template-columns: 23% 75% 2%;
+    grid-template-rows: 5fr 90fr 5fr;
+    grid-template-columns: 23fr 75fr 2fr;
     grid-template-areas:
       ". . ."
       "menu content ."
@@ -155,8 +155,8 @@
 
   @media screen and (max-width: 720px) {
     .container {
-      grid-template-rows: 10% 90%;
-      grid-template-columns: 100%;
+      grid-template-rows: 1fr 9fr;
+      grid-template-columns: 1fr;
       grid-template-areas:
         "menu"
         "content";
