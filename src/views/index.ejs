@@ -11,16 +11,24 @@
 
 <body>
   <div class="container">
-    <div class="left-bar">
-      <div class="title"><i class="fa-solid fa-qrcode"></i>IoT</div>
-      <div class="left-list">
-        <div class="list"><i class="fa-solid fa-house"></i>Home</div>
-        <div class="list"><i class="fa-solid fa-plus"></i>Create Activity</div>
-        <div class="list"><i class="fa-solid fa-gear"></i>Setting</div>
+    <div class="menu-bar">
+      <div class="title"><i class="fa-solid fa-qrcode"></i>
+        IoT
+      </div>
+      <div class="menu-list">
+        <div class="list"><i class="fa-solid fa-house"></i>
+          <p>Home</p>
+        </div>
+        <div class="list"><i class="fa-solid fa-plus"></i>
+          <p>Create Activity</p>
+        </div>
+        <div class="list"><i class="fa-solid fa-gear"></i>
+          <p>Setting</p>
+        </div>
       </div>
     </div>
-    <div class="right">
-      <div class="right-header">
+    <div class="content">
+      <div class="content-header">
         <i class="fa-regular fa-bell"></i>
         <i class="fa-solid fa-user"></i>
         <div class="email">User@gmail.com</div>
@@ -30,8 +38,10 @@
           <h3>Your activities:</h3>
           <ul>
             <% activities.forEach(function(activity) { %>
-              <li><%= activity.name %></li>
-            <% }); %>
+              <li>
+                <%= activity.name %>
+              </li>
+              <% }); %>
           </ul>
         </div>
       </div>
@@ -43,6 +53,7 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
   * {
     font-family: "Noto Sans", sans-serif;
   }
@@ -60,12 +71,12 @@
     grid-template-columns: 23% 75% 2%;
     grid-template-areas:
       ". . ."
-      "left right ."
+      "menu content ."
       ". . .";
   }
 
-  .left-bar {
-    grid-area: left;
+  .menu-bar {
+    grid-area: menu;
     background-color: #57419d;
   }
 
@@ -87,7 +98,7 @@
     color: #ffcb83;
   }
 
-  .left-list {
+  .menu-list {
     margin-top: 70px;
   }
 
@@ -97,24 +108,28 @@
     padding: 15px 0 15px 20%;
   }
 
+  .list>p {
+    display: inline;
+  }
+
   .list:hover {
     color: #ffcb83;
     cursor: pointer;
-    border-left: solid 3px;
+    border-left: solid 3px #ffcb83;
   }
 
-  .left-list>.list>i {
+  .list>i {
     color: #ffcb83;
     margin-right: 20px;
   }
 
-  .right {
-    grid-area: right;
+  .content {
+    grid-area: content;
     background-color: white;
     border-radius: 20px;
   }
 
-  .right-header {
+  .content-header {
     margin: 20px 20px 0;
     display: flex;
     flex-wrap: wrap;
@@ -122,12 +137,12 @@
     padding: 20px;
   }
 
-  .right-header > i {
+  .content-header>i {
     color: #57419d;
     font-size: 30px;
     margin: 0 15px;
   }
-  
+
   .email {
     color: black;
     font-size: 20px;
@@ -136,5 +151,56 @@
 
   .main-content {
     width: 100%;
+  }
+
+  @media screen and (max-width: 720px) {
+    .container {
+      grid-template-rows: 10% 90%;
+      grid-template-columns: 100%;
+      grid-template-areas:
+        "menu"
+        "content";
+    }
+
+    .menu-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .title {
+      display: flex;
+      margin: 0;
+      align-items: center;
+      margin-left: 50px;
+    }
+
+    .menu-list {
+      margin: 0;
+      margin-right: 30px;
+      display: flex;
+    }
+
+    .list {
+      padding: 10px 20px;
+    }
+
+    .list>i {
+      margin-right: 0;
+    }
+
+    .list>p {
+      display: none;
+    }
+
+    .list:hover {
+      background-color: white;
+      border-radius: 5px 5px 0px 0px;
+      border-left: none;
+    }
+
+    .content {
+      border-radius: 15px;
+    }
   }
 </style>
