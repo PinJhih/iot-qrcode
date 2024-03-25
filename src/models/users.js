@@ -13,14 +13,18 @@ async function addUser(name, password) {
 }
 
 async function login(name, password) {
-  let sql = `SELECT (password) FROM user WHERE name = ${name}`;
+  let sql = `SELECT * FROM user WHERE name = '${name}'`;
   let res = await db.query(sql);
-
   if (res.length == 0) {
-    return false;
+    return undefined;
   }
-  let correctPassword = res[0].password;
-  return correctPassword === password;
+
+  let user = res[0];
+  if (password == user.password) {
+    return user.id;
+  } else {
+    return undefined;
+  }
 }
 
 module.exports = { getName, addUser, login };

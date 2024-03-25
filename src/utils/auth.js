@@ -1,11 +1,15 @@
 function auth(req, res, next) {
-  if (req.locals == undefined) {
-    req.locals = {};
+  if (req.session.userID != undefined) {
+    next();
+  } else if (isValidPath(req.path)) {
+    next();
+  } else {
+    res.redirect("./login");
   }
+}
 
-  // TODO: session-cookie
-  req.locals.userID = 1;
-  next();
+function isValidPath(path) {
+  return path == "/login" || path == "/api/login" || path.startsWith("/public");
 }
 
 module.exports = auth;
