@@ -10,10 +10,12 @@ router.post("/login", async (req, res, next) => {
   let user = body.user;
   let password = body.password;
 
-  if (users.login(user, password)) {
-    res.redirect("/");
+  let userID = await users.login(user, password);
+  if (userID != undefined) {
+    res.redirect("../");
   } else {
-    res.redirect("/login");
+    res.status(400);
+    res.send("failed");
   }
 });
 

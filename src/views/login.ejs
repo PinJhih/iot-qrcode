@@ -3,13 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Login</title>
     <link href="/public/styles/main.css" rel="stylesheet" />
   </head>
 
   <body>
     <main>
       <h1>Login</h1>
+      <form id="loginForm">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </main>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const user = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch("/api/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                user,
+                password,
+              }),
+            });
+
+            if (response.ok) {
+              window.location.href = response.url;
+            } else {
+              const errorMessage = await response.text();
+              alert(`Login failed: ${errorMessage}`);
+            }
+          } catch (error) {
+            console.error("Login error:", error);
+            alert("An error occurred while trying to login.");
+          }
+        });
+    </script>
   </body>
 </html>
