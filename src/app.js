@@ -5,6 +5,7 @@ const httpError = require("http-errors");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const staticFiles = express.static(path.join(__dirname, "../public"));
+const session = require("./utils/session");
 const auth = require("./utils/auth");
 
 // create instances of routers
@@ -23,6 +24,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session);
 app.use(auth);
 
 // static files
