@@ -12,4 +12,23 @@ async function createActivity(name, host) {
   await db.query(sql);
 }
 
-module.exports = { getActivities, createActivity };
+async function joinActivity(activityID, userID) {
+  let sql = `INSERT INTO participant (activity_id, user_id)
+    VALUES ('${activityID}', ${userID})`;
+  await db.query(sql);
+}
+
+async function getJoinedActivity(userID) {
+  let sql = `SELECT * FROM activity INNER JOIN participant
+    ON activity.id = participant.activity_id
+    WHERE participant.user_id = ${userID}`;
+  let activities = await db.query(sql);
+  await activities;
+}
+
+module.exports = {
+  getActivities,
+  createActivity,
+  joinActivity,
+  getJoinedActivity,
+};
