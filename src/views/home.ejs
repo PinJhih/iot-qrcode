@@ -3,7 +3,7 @@
   <div class="content">
     <div class="content-header">
       <div class="email"><b>Hello, <%- username %>!</b></div>
-      <i class="fa-solid fa-right-from-bracket"></i>
+      <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
         <h3>Your activities:</h3>
         <ul>
@@ -63,3 +63,17 @@
       }
     }
   </style>
+
+  <script>
+    async function logout() {
+      try {
+        const response = await fetch("/api/logout", {
+          method: "GET",
+        });
+      } catch (error) {
+        console.error("Logout error:", error);
+        alert("An error occurred while trying to logout.");
+      }
+      location.reload();
+    }
+  </script>
