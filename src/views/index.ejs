@@ -29,12 +29,9 @@
     </div>
     <div class="content">
       <div class="content-header">
-        <i class="fa-regular fa-bell"></i>
-        <i class="fa-solid fa-user"></i>
-        <div class="email">User@gmail.com</div>
+        <div class="email"><b>Hello, <%- username %>!</b></div>
+        <i class="fa-solid fa-right-from-bracket"></i>
         <div class="main-content">
-          <h3>Hello, <%- username %>!</h3>
-
           <h3>Your activities:</h3>
           <ul>
             <% activities.forEach(function(activity) { %>
