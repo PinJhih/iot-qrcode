@@ -14,6 +14,12 @@ function init() {
     name TEXT,
     host INTEGER)`;
   query(createActTable);
+  
+  const createParticipantTable = `CREATE TABLE IF NOT EXISTS participant (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    activity_id INTEGER)`;
+  query(createParticipantTable);
 }
 
 // create file if not exist

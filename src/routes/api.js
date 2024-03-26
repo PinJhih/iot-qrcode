@@ -34,12 +34,23 @@ router.post("/user", async (req, res, next) => {
 
 router.post("/activity/:name", async (req, res, next) => {
   let name = req.params.name;
-  let host = req.locals.userID;
+  let host = req.session.userID;
   try {
     await activities.createActivity(name, host);
     res.send("OK!");
   } catch (err) {
     next(httpError(500, `Error: Cannot create Activity.\n${err}`));
+  }
+});
+
+router.get("/activity/join/:id", async (req, res, next) => {
+  let activityID = req.params.id;
+  let user = req.session.userID;
+  try {
+    await activities.joinActivity(activityID, user);
+    res.send("OK!");
+  } catch (err) {
+    next(httpError(500, `Error: Cannot join Activity.\n${err}`));
   }
 });
 
