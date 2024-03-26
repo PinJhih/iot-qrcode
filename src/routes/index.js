@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
   const activityList = await activities.getActivities(userID);
 
   res.locals.username = username;
-  res.render("index", {
+  res.render("home", {
     title: "Welcome to my Project!",
     activities: activityList,
   });

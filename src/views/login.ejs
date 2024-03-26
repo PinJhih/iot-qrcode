@@ -16,7 +16,7 @@
       <div class="title">IoT</div>
     </div>
     <div class="right-area">
-      <main>
+      <div class="main">
         <h1>Login</h1>
         <form id="loginForm">
           <div>
@@ -31,7 +31,7 @@
           </div>
           <button type="submit">Login</button>
         </form>
-      </main>
+      </div>
     </div>
   </div>
 
@@ -91,30 +91,35 @@
   .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: "left right";
+    grid-template-areas: "title login";
     height: 100%;
   }
 
   .left-area {
-    grid-area: left;
+    grid-area: "title";
     background: #57419d;
   }
 
   .fa-qrcode {
     color: #ffcb83;
     font-size: 50px;
-    margin: 30px;
+    margin: 50px;
   }
 
   .title {
     color: white;
     font-size: 80px;
     font-weight: bold;
-    margin: 30px;
+    margin: 100px 0 0 100px;
   }
 
   .right-area {
-    grid-area: right;
+    grid-area: "login";
+  }
+
+
+  .main {
+    margin: 100px 0 0 100px;
   }
 
   input {
@@ -123,14 +128,53 @@
 
   button {
     margin: 10px 0;
-    background: #814df5;
+    background: #57419d;
     color: white;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
   }
-
+  
   button:hover {
     cursor: pointer;
-    background: #57419d;
+    background: #453772;
+  }
+
+  @media screen and (max-width: 720px) {
+    .container {
+      grid-template-rows: 1fr 9fr;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "login";
+    }
+
+    .left-area {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+
+    .fa-qrcode {
+      font-size: 50px;
+      margin: 10px;
+    }
+
+    .title {
+      font-size: 50px;
+      margin: 10px;
+    }
+
+    .right-area {
+      max-width: 720px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .main {
+      margin: 50px;
+    }
   }
 </style>

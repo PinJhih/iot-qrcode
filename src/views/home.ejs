@@ -1,0 +1,65 @@
+<%- include("header") -%>
+
+  <div class="content">
+    <div class="content-header">
+      <div class="email"><b>Hello, <%- username %>!</b></div>
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <div class="main-content">
+        <h3>Your activities:</h3>
+        <ul>
+          <% activities.forEach(function(activity) { %>
+            <li>
+              <%= activity.name %>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  </body>
+
+  </html>
+
+  <style>
+    .content {
+      grid-area: content;
+      background-color: white;
+      border-radius: 20px;
+    }
+
+    .content-header {
+      margin: 20px 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: end;
+      padding: 20px;
+    }
+
+    .content-header>i {
+      color: #57419d;
+      font-size: 30px;
+      margin: 0 15px;
+    }
+
+    .content-header>i:hover {
+      cursor: pointer;
+      color: #453772;
+    }
+
+    .email {
+      color: black;
+      font-size: 20px;
+      margin: 0 15px;
+    }
+
+    .main-content {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 720px) {
+      .content {
+        border-radius: 0;
+      }
+    }
+  </style>
