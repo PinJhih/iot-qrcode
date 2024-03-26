@@ -13,11 +13,21 @@ router.post("/login", async (req, res, next) => {
   let userID = await users.login(user, password);
   if (userID != undefined) {
     req.session.userID = userID;
-    res.redirect("../");
+    res.redirect("/");
   } else {
     res.status(400);
     res.send("failed");
   }
+});
+
+router.get("/logout", async (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log("[ERROR] Cannot destroy session.");
+    } else {
+      res.redirect("/login");
+    }
+  });
 });
 
 router.post("/user", async (req, res, next) => {

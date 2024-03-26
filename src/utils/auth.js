@@ -4,7 +4,7 @@ function auth(req, res, next) {
   } else if (isValidPath(req.path)) {
     next();
   } else {
-    res.redirect("./login");
+    res.redirect("/login");
   }
 }
 
