@@ -9,7 +9,10 @@ function auth(req, res, next) {
 }
 
 function isValidPath(path) {
-  return path == "/login" || path == "/api/login" || path.startsWith("/public");
+  return path == "/login" || path == "/api/login"
+    || path.startsWith("/public")
+    || path == "/register" || path == "/api/register"
+    || path == "/api/user";
 }
 
 module.exports = auth;

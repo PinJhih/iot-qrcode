@@ -20,6 +20,10 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.get("/register", async (req, res, next) => {
+  res.redirect("/register");
+});
+
 router.get("/logout", async (req, res, next) => {
   req.session.destroy((err) => {
     if (err) {
@@ -35,8 +39,10 @@ router.post("/user", async (req, res, next) => {
   let name = body.name;
   let password = body.password;
   try {
+    console.log(`name = ${name}`);
+    console.log(`password = ${password}`);
     await users.addUser(name, password);
-    res.send("OK!");
+    res.redirect("/login");
   } catch (err) {
     next(httpError(500, `Error: Cannot add user.\n${err}`));
   }
