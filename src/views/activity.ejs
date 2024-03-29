@@ -1,0 +1,120 @@
+<%- include("header") -%>
+
+    <div class="content">
+        <div class="content-header">
+            <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
+            <div class="main-content">
+                <h1>Create Activity</h1>
+                <form id="activity-form">
+                    <div>
+                        <label for="activity-name">Activity Name:</label>
+                        <br>
+                        <input type="text" id="activity-name" name="activity-name" required />
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+
+    </html>
+
+    <style>
+        .content {
+            grid-area: content;
+            background-color: white;
+            border-radius: 20px;
+        }
+
+        .content-header {
+            margin: 20px 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: end;
+            padding: 20px;
+        }
+
+        .content-header>i {
+            color: #57419d;
+            font-size: 30px;
+            margin: 0 15px;
+        }
+
+        .content-header>i:hover {
+            cursor: pointer;
+            color: #453772;
+        }
+
+        .main-content {
+            margin-left: 100px;
+            width: 100%;
+        }
+
+        input {
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 10px 0;
+            background: #57419d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: #453772;
+        }
+
+        @media screen and (max-width: 720px) {
+            .content {
+                border-radius: 0;
+            }
+        }
+    </style>
+
+    <script>
+        async function logout() {
+            try {
+                const response = await fetch("/api/logout", {
+                    method: "GET",
+                });
+            } catch (error) {
+                console.error("Logout error:", error);
+                alert("An error occurred while trying to logout.");
+            }
+            location.reload();
+        }
+
+        document
+            .getElementById("activity-form")
+            .addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById("activity-name").value;
+
+                try {
+                    const response = await fetch(`/api/activity/${name}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    if (response.ok) {
+                        window.location.href = response.url;
+                    } else {
+                        const errorMessage = await response.text();
+                        alert(`Create failed: ${errorMessage}`);
+                    }
+                } catch (error) {
+                    console.error("Login error:", error);
+                    alert("An error occurred while trying to create event.");
+                }
+            });
+    </script>

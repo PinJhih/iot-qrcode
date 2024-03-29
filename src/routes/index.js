@@ -24,4 +24,8 @@ router.get("/register", async (req, res) => {
   res.render("register");
 });
 
+router.get("/activity", async (req, res) => {
+  res.render("activity");
+});
+
 module.exports = router;
