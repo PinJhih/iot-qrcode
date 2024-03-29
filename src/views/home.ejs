@@ -6,13 +6,11 @@
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
         <h3>Your activities:</h3>
-        <ul>
+        <div class="activities">
           <% activities.forEach(function(activity) { %>
-            <li>
-              <%= activity.name %>
-            </li>
-            <% }); %>
-        </ul>
+            <%- include("act", {activity: activity}); %>
+              <% }); %>
+        </div>
       </div>
     </div>
   </div>
@@ -75,5 +73,11 @@
         alert("An error occurred while trying to logout.");
       }
       location.reload();
+    }
+
+    function genQrcode(id) {
+      document.getElementById(`qrcode${id}`).innerHTML = "";
+      var qrcode = new QRCode(`qrcode${id}`, `${window.location.host}/activity/join/${id}`);
+      console.log("Generating QR code for activity ID: " + id);
     }
   </script>
