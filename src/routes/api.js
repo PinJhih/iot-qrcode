@@ -39,10 +39,13 @@ router.post("/user", async (req, res, next) => {
   let name = body.name;
   let password = body.password;
   try {
-    console.log(`name = ${name}`);
-    console.log(`password = ${password}`);
-    await users.addUser(name, password);
-    res.redirect("/login");
+    if (name != undefined && password != undefined) {
+      await users.addUser(name, password);
+      res.redirect("/login");
+    } else {
+      res.status(400);
+      res.send("register failed");
+    }
   } catch (err) {
     next(httpError(500, `Error: Cannot add user.\n${err}`));
   }

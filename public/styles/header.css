@@ -89,6 +89,7 @@ body {
         margin: 10px;
         align-items: center;
         margin-left: 50px;
+        font-size: 40px;
     }
 
     .menu-list {
@@ -98,6 +99,7 @@ body {
     }
 
     .list {
+        font-size: 25px;
         padding: 10px 20px;
     }
 
@@ -113,5 +115,16 @@ body {
         background-color: white;
         border-radius: 20px 20px 0px 0px;
         border-left: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .list {
+        font-size: 20px; 
+        padding: 5px 10px;
     }
 }
