@@ -51,12 +51,16 @@ router.post("/user", async (req, res, next) => {
   }
 });
 
+router.get("/activity", async (req, res, next) => {
+  res.redirect("/activity");
+});
+
 router.post("/activity/:name", async (req, res, next) => {
   let name = req.params.name;
   let host = req.session.userID;
   try {
     await activities.createActivity(name, host);
-    res.send("OK!");
+    res.redirect('/');
   } catch (err) {
     next(httpError(500, `Error: Cannot create Activity.\n${err}`));
   }
