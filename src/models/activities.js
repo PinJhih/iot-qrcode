@@ -18,6 +18,12 @@ async function joinActivity(activityID, userID) {
   await db.query(sql);
 }
 
+async function exitActivity(activityID, userID) {
+  let sql = `DELETE FROM participant
+    WHERE activity_id=${activityID} AND user_id=${userID}`;
+  await db.query(sql);
+}
+
 async function getJoinedActivity(userID) {
   let sql = `SELECT * FROM activity INNER JOIN participant
     ON activity.id = participant.activity_id
@@ -30,5 +36,6 @@ module.exports = {
   getActivities,
   createActivity,
   joinActivity,
+  exitActivity,
   getJoinedActivity,
 };

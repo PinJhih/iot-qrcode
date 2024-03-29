@@ -73,4 +73,15 @@ router.get("/activity/join/:id", async (req, res, next) => {
   }
 });
 
+router.get("/activity/exit/:id", async (req, res, next) => {
+  let activityID = req.params.id;
+  let user = req.session.userID;
+  try {
+    await activities.exitActivity(activityID, user);
+    res.send("OK!");
+  } catch (err) {
+    next(httpError(500, `Error: Cannot join Activity.\n${err}`));
+  }
+});
+
 module.exports = router;
