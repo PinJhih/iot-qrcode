@@ -38,6 +38,14 @@ async function getJoinedActivity(userID) {
   await activities;
 }
 
+async function getParticipants(activityID) {
+  let sql = `SELECT * FROM user INNER JOIN participant
+    ON user.id = participant.user_id
+    WHERE participant.activity_id = ${activityID}`;
+  let participants = await db.query(sql);
+  return participants;
+}
+
 module.exports = {
   getActivities,
   createActivity,
@@ -45,4 +53,5 @@ module.exports = {
   joinActivity,
   exitActivity,
   getJoinedActivity,
+  getParticipants,
 };
