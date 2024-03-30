@@ -4,7 +4,7 @@
         <div class="content-header">
             <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
             <div class="main-content">
-                <h1>Create Activity</h1>
+                <h2>Create Activity</h2>
                 <form id="activity-form">
                     <div>
                         <label for="activity-name">Activity Name:</label>
@@ -48,7 +48,7 @@
         }
 
         .main-content {
-            margin-left: 100px;
+            margin: 0 50px;
             width: 100%;
         }
 
@@ -79,18 +79,6 @@
     </style>
 
     <script>
-        async function logout() {
-            try {
-                const response = await fetch("/api/logout", {
-                    method: "GET",
-                });
-            } catch (error) {
-                console.error("Logout error:", error);
-                alert("An error occurred while trying to logout.");
-            }
-            location.reload();
-        }
-
         document
             .getElementById("activity-form")
             .addEventListener("submit", async function (event) {

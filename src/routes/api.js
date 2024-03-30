@@ -66,6 +66,17 @@ router.post("/activity/:name", async (req, res, next) => {
   }
 });
 
+router.delete("/activity/delete/:id", async (req, res, next) => {
+  let activityID = req.params.id;
+  try {
+    await activities.deleteActivity(activityID);
+    res.send('OK');
+    res.redirect('/')
+  } catch (err) {
+    next(httpError(500, `Error: Cannot delete Activity.\n${err}`));
+  }
+});
+
 router.get("/activity/join/:id", async (req, res, next) => {
   let activityID = req.params.id;
   let user = req.session.userID;

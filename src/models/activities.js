@@ -12,6 +12,12 @@ async function createActivity(name, host) {
   await db.query(sql);
 }
 
+async function deleteActivity(activityID) {
+  let sql = `DELETE FROM activity
+    WHERE id = ${activityID}`;
+  await db.query(sql);
+}
+
 async function joinActivity(activityID, userID) {
   let sql = `INSERT INTO participant (activity_id, user_id)
     VALUES ('${activityID}', ${userID})`;
@@ -35,6 +41,7 @@ async function getJoinedActivity(userID) {
 module.exports = {
   getActivities,
   createActivity,
+  deleteActivity,
   joinActivity,
   exitActivity,
   getJoinedActivity,

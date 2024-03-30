@@ -5,7 +5,7 @@
       <div class="email"><b>Hello, <%- username %>!</b></div>
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
-        <h3>Your activities:</h3>
+        <h2>Your activities:</h2>
         <div class="activities">
           <% activities.forEach(function(activity) { %>
             <%- include("act", {activity: activity}); %>
@@ -52,7 +52,24 @@
     }
 
     .main-content {
+      margin: 0 50px;
       width: 100%;
+    }
+
+    .btn-primary {
+      margin: 5px;
+    }
+
+    .btn-secondary {
+      border: none;
+    }
+
+    .btn-exit {
+      background: red;
+    }
+
+    .btn-exit:hover {
+      background: rgb(128, 0, 0);
     }
 
     @media screen and (max-width: 720px) {
@@ -61,23 +78,3 @@
       }
     }
   </style>
-
-  <script>
-    async function logout() {
-      try {
-        const response = await fetch("/api/logout", {
-          method: "GET",
-        });
-      } catch (error) {
-        console.error("Logout error:", error);
-        alert("An error occurred while trying to logout.");
-      }
-      location.reload();
-    }
-
-    function genQrcode(id) {
-      document.getElementById(`qrcode${id}`).innerHTML = "";
-      var qrcode = new QRCode(`qrcode${id}`, `${window.location.host}/activity/join/${id}`);
-      console.log("Generating QR code for activity ID: " + id);
-    }
-  </script>
