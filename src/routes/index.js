@@ -28,4 +28,13 @@ router.get("/activity", async (req, res) => {
   res.render("activity");
 });
 
+router.get("/participants/:id", async (req, res) => {
+  let id = req.params.id;
+  let participants = await activities.getParticipants(id);
+  console.log(participants);
+  res.render("participants", {
+    participants: participants
+  });
+});
+
 module.exports = router;

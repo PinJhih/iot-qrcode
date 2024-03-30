@@ -50,6 +50,23 @@ function genQrcode(id) {
     document.getElementById(`qrcode${id}`).innerHTML = "";
     var qrcode = new QRCode(`qrcode${id}`, `http://${window.location.host}/api/activity/join/${id}`);
     console.log("Generating QR code for activity ID: " + id);
+
+    displayParticipants(id);
+}
+
+
+async function displayParticipants(id) {
+    let url = `http://${window.location.host}/participants/${id}`;
+    let elementID = `participants-${id}`;
+
+    try {
+        let res = await fetch(url);
+        let participants = await res.text();
+        console.log(participants);
+        document.getElementById(elementID).innerHTML = participants;
+    } catch (error) {
+        alert(error);
+    }
 }
 
 async function DeleteActivity(id) {
