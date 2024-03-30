@@ -10,10 +10,10 @@
     <div id="collapse<%= activity.id %>" class="accordion-collapse collapse" aria-labelledby="headingOne"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
-            <div id="participants-<%= activity.id %>"></div>
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="logoWrap" id="qrcode<%= activity.id %>"></div>
+                    <div class="participants" id="participants-<%= activity.id %>"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
@@ -23,30 +23,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- <button type="button" class="btn btn-outline-secondary btn-lg" data-bs-toggle="modal"
-    data-bs-target="#actModal<%= activity.id %>" onclick="genQrcode(<%= activity.id %>)">
-    <%= activity.name %>
-</button> -->
-<!-- Modal -->
-<!-- <div class="modal fade" id="actModal<%= activity.id %>" tabindex="-1">
-    <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
-                    <%= activity.name %>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="logoWrap" id="qrcode<%= activity.id %>"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
-                    onclick="DeleteActivity(<%= activity.id %>)">Delete</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->

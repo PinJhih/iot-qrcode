@@ -24,6 +24,11 @@
       grid-area: content;
       background-color: white;
       border-radius: 20px;
+      overflow-y: scroll;
+    }
+
+    .content::-webkit-scrollbar {
+      display: none;
     }
 
     .content-header {
@@ -72,6 +77,21 @@
 
     .accordion-button:not(.collapsed) {
       box-shadow: none;
+    }
+
+    .modal-body {
+      height: 200px;
+      display: flex;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .modal-body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .participants {
+      margin-left: 100px;
     }
 
     .logoWrap>img {
