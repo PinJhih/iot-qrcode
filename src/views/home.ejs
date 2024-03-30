@@ -6,7 +6,7 @@
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
         <h2>Your activities:</h2>
-        <div class="activities">
+        <div class="activities accordion accordion-flush">
           <% activities.forEach(function(activity) { %>
             <%- include("act", {activity: activity}); %>
               <% }); %>
@@ -56,16 +56,31 @@
       width: 100%;
     }
 
-    .btn-primary {
-      margin: 5px;
+    .activities {
+      margin-top: 30px;
     }
 
-    .btn-secondary {
-      border: none;
+    .accordion-flush .accordion-item .accordion-button {
+      background: white;
+      border-bottom: solid #ccc 1px;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+      border-bottom: solid #ccc 1px;
+    }
+
+    .accordion-button:not(.collapsed) {
+      box-shadow: none;
+    }
+
+    .logoWrap>img {
+      width: 200px;
     }
 
     .btn-exit {
       background: red;
+      border: none;
     }
 
     .btn-exit:hover {
