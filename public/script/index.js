@@ -48,7 +48,7 @@ async function logout() {
 
 function genQrcode(id) {
     document.getElementById(`qrcode${id}`).innerHTML = "";
-    var qrcode = new QRCode(`qrcode${id}`, `${window.location.host}/activity/join/${id}`);
+    var qrcode = new QRCode(`qrcode${id}`, `http://${window.location.host}/api/activity/join/${id}`);
     console.log("Generating QR code for activity ID: " + id);
 }
 
