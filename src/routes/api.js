@@ -60,7 +60,7 @@ router.post("/activity/:name", async (req, res, next) => {
   let host = req.session.userID;
   try {
     await activities.createActivity(name, host);
-    res.redirect('/');
+    res.redirect("/");
   } catch (err) {
     next(httpError(500, `Error: Cannot create Activity.\n${err}`));
   }
@@ -70,8 +70,8 @@ router.delete("/activity/delete/:id", async (req, res, next) => {
   let activityID = req.params.id;
   try {
     await activities.deleteActivity(activityID);
-    res.send('OK');
-    res.redirect('/')
+    res.send("OK");
+    res.redirect("/");
   } catch (err) {
     next(httpError(500, `Error: Cannot delete Activity.\n${err}`));
   }
@@ -82,7 +82,7 @@ router.get("/activity/join/:id", async (req, res, next) => {
   let user = req.session.userID;
   try {
     await activities.joinActivity(activityID, user);
-    res.send("OK!");
+    res.render("succeed");
   } catch (err) {
     next(httpError(500, `Error: Cannot join Activity.\n${err}`));
   }
