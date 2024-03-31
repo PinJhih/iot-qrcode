@@ -5,7 +5,7 @@
       <div class="email"><b>Hello, <%- username %>!</b></div>
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
-        <h2>Your activities:</h2>
+        <p>Your activities:</p>
         <div class="activities accordion accordion-flush">
           <% activities.forEach(function(activity) { %>
             <%- include("act", {activity: activity}); %>
@@ -61,6 +61,11 @@
       width: 100%;
     }
 
+    .main-content>p {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
     .activities {
       margin-top: 30px;
     }
@@ -110,6 +115,29 @@
     @media screen and (max-width: 720px) {
       .content {
         border-radius: 0;
+      }
+
+      .main-content>p {
+        font-size: 20px;
+      }
+
+      .modal-body {
+        display: block;
+        height: 150px;
+      }
+
+      .participants {
+        margin-top: 10px;
+        margin-left: 0;
+      }
+
+      .logoWrap>img {
+        width: 100px;
+      }
+
+      .btn-exit {
+        background: red;
+        border: none;
       }
     }
   </style>

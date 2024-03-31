@@ -4,7 +4,7 @@
         <div class="content-header">
             <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
             <div class="main-content">
-                <h2>Create Activity</h2>
+                <p>Create Activity</p>
                 <form id="activity-form">
                     <div>
                         <label for="activity-name">Activity Name:</label>
@@ -26,6 +26,11 @@
             grid-area: content;
             background-color: white;
             border-radius: 20px;
+        }
+
+        .main-content>p {
+            font-size: 30px;
+            font-weight: bold;
         }
 
         .content-header {
@@ -78,6 +83,14 @@
         @media screen and (max-width: 720px) {
             .content {
                 border-radius: 0;
+            }
+
+            .content-header {
+                margin: 0;
+            }
+
+            .main-content>p {
+                font-size: 20px;
             }
         }
     </style>
