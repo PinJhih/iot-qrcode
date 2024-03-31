@@ -37,7 +37,9 @@ router.get("/joined", async (req, res) => {
 });
 
 router.get("/activity", async (req, res) => {
-  res.render("activity");
+  res.render("activity", {
+    title: "Create activity"
+  });
 });
 
 router.get("/participants/:id", async (req, res) => {
