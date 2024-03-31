@@ -14,7 +14,7 @@ body {
     height: 100vh;
     display: grid;
     grid-template-rows: 5fr 90fr 5fr;
-    grid-template-columns: 23fr 75fr 2fr;
+    grid-template-columns: 25fr 75fr 2fr;
     grid-template-areas:
         ". . ."
         "menu content ."

@@ -51,6 +51,10 @@ router.post("/user", async (req, res, next) => {
   }
 });
 
+router.get("/joined", async (req, res, next) => {
+  res.redirect("/joined");
+});
+
 router.get("/activity", async (req, res, next) => {
   res.redirect("/activity");
 });
@@ -95,7 +99,7 @@ router.get("/activity/exit/:id", async (req, res, next) => {
     await activities.exitActivity(activityID, user);
     res.send("OK!");
   } catch (err) {
-    next(httpError(500, `Error: Cannot join Activity.\n${err}`));
+    next(httpError(500, `Error: Cannot exit Activity.\n${err}`));
   }
 });
 

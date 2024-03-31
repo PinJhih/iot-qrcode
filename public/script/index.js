@@ -16,6 +16,24 @@ async function GoToHomePage() {
     }
 }
 
+async function GoToJoinedPage() {
+    try {
+        const response = await fetch("/api/joined", {
+            method: "GET",
+        });
+
+        if (response.ok) {
+            window.location.href = response.url;
+        } else {
+            const errorMessage = await response.text();
+            alert(`Error: ${errorMessage}`);
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        alert("An error occurred while trying to change page.");
+    }
+}
+
 async function GoToActivityPage() {
     try {
         const response = await fetch("/api/activity", {
@@ -73,6 +91,18 @@ async function DeleteActivity(id) {
     try {
         const response = await fetch(`/api/activity/delete/${id}`, {
             method: "DELETE",
+        });
+        location.reload();
+    } catch (error) {
+        console.error("Exit error:", error);
+        alert("An error occurred while trying to exit an activity.");
+    }
+}
+
+async function ExitActivity(id) {
+    try {
+        const response = await fetch(`/api/activity/exit/${id}`, {
+            method: "GET",
         });
         location.reload();
     } catch (error) {

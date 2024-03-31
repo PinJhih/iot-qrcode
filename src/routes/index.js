@@ -24,6 +24,18 @@ router.get("/register", async (req, res) => {
   res.render("register");
 });
 
+router.get("/joined", async (req, res) => {
+  const userID = req.session.userID;
+  const username = await users.getName(userID);
+  const joinedActivityList = await activities.getJoinedActivity(userID);
+
+  res.locals.username = username;
+  res.render("joined", {
+    title: "My joined activities",
+    joined: joinedActivityList,
+  });
+});
+
 router.get("/activity", async (req, res) => {
   res.render("activity");
 });

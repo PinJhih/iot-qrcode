@@ -35,7 +35,7 @@ async function getJoinedActivity(userID) {
     ON activity.id = participant.activity_id
     WHERE participant.user_id = ${userID}`;
   let activities = await db.query(sql);
-  await activities;
+  return activities;
 }
 
 async function getParticipants(activityID) {

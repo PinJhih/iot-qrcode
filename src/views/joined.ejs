@@ -5,10 +5,10 @@
       <div class="email"><b>Hello, <%- username %>!</b></div>
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
-        <p>Your activities:</p>
+        <p>Joined activities:</p>
         <div class="activities accordion accordion-flush">
-          <% activities.forEach(function(activity) { %>
-            <%- include("act", {activity: activity, owner: true}); %>
+          <% joined.forEach(function(activity) { %>
+            <%- include("act", {activity: activity, owner: false}); %>
               <% }); %>
         </div>
       </div>

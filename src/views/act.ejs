@@ -16,8 +16,13 @@
                     <div class="participants" id="participants-<%= activity.id %>"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
-                        onclick="DeleteActivity(<%= activity.id %>)">Delete</button>
+                    <% if (owner) { %>
+                        <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
+                            onclick="DeleteActivity(<%= activity.id %>)">Delete</button>
+                    <% } else { %>
+                        <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
+                            onclick="ExitActivity(<%= activity.activity_id %>)">Exit</button>
+                    <% } %>
                 </div>
             </div>
         </div>
