@@ -51,7 +51,7 @@ body {
 .list {
     color: white;
     font-size: 25px;
-    padding: 15px 0 15px 20%;
+    padding: 15px 5% 15px 15%;
 }
 
 .list>p {
