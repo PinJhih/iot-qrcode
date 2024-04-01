@@ -58,4 +58,10 @@ router.get("/scanner/:id", async (req, res) => {
   });
 });
 
+router.get("/barcode", async (req, res) => {
+  res.render("barcode", {
+    title: "Barcode"
+  });
+});
+
 module.exports = router;
