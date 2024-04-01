@@ -45,9 +45,26 @@ router.get("/activity", async (req, res) => {
 router.get("/participants/:id", async (req, res) => {
   let id = req.params.id;
   let participants = await activities.getParticipants(id);
-  console.log(participants);
   res.render("participants", {
     participants: participants
+  });
+});
+
+router.get("/scanner/:id", async (req, res) => {
+  let id = req.params.id;
+  res.render("scanner", {
+    title: "Scanner",
+    id: id
+  });
+});
+
+router.get("/barcode", async (req, res) => {
+  const userID = req.session.userID;
+  const key = users.set(userID)
+  console.log(key);
+  res.render("barcode", {
+    title: "Barcode",
+    key: key
   });
 });
 

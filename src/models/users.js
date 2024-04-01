@@ -27,4 +27,28 @@ async function login(name, password) {
   }
 }
 
-module.exports = { getName, addUser, login };
+userKeys = new Map();
+
+function generateRandomKey(length) {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return result;
+}
+
+function set(userID) {
+  let key = generateRandomKey(6);
+  userKeys.set(key, userID);
+  return key;
+}
+
+function get(key) {
+  return userKeys.get(key);
+}
+
+module.exports = { getName, addUser, login, set, get };
