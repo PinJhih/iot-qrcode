@@ -5,13 +5,34 @@
       <i class="fa-solid fa-right-from-bracket" onclick="logout()"></i>
       <div class="main-content">
         <p>Scan barcode to invite people!</p>
-        <div id="cam"></div>
+        <div id="reader"></div>
       </div>
     </div>
   </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/quagga/dist/quagga.min.js"></script>
-  <script src="/public/script/scanner.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
+  <script>
+  function onScanSuccess(barCodeMessage) {
+    console.log(`Barcode detected: ${barCodeMessage}`);
+    
+    fetch(`/api/activity/invite/${barCodeMessage}/<%= id %>`, {method: "POST"})
+      .then(res=> {
+        alert("Invite user succeed!");
+      })
+      .catch(err=> {
+        alert(err);
+      })
+  }
+
+  function onScanFailure(error) {
+    console.warn(`Barcode scan error: ${error}`);
+  }
+
+  var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 300, formatsToSupport: [ Html5QrcodeSupportedFormats.CODE_39 ]  }
+  );
+  html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+  </script>
   </body>
 
   </html>

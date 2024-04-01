@@ -103,4 +103,18 @@ router.get("/activity/exit/:id", async (req, res, next) => {
   }
 });
 
+router.post("/activity/invite/:userKey/:actID", async (req, res, next) => {
+  let key = req.params.userKey;
+  let user = users.get(key);
+  let activityID = req.params.actID;
+
+  console.log(user, activityID);
+  try {
+    await activities.joinActivity(activityID, user);
+    res.send("OK!");
+  } catch (err) {
+    next(httpError(500, `Error: Cannot invite user.\n${err}`));
+  }
+});
+
 module.exports = router;

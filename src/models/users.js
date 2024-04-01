@@ -27,11 +27,11 @@ async function login(name, password) {
   }
 }
 
-let userKeys = new Map();
+userKeys = new Map();
 
 function generateRandomKey(length) {
   const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let result = "";
 
   for (let i = 0; i < length; i++) {
@@ -42,7 +42,7 @@ function generateRandomKey(length) {
 }
 
 function set(userID) {
-  let key = generateRandomKey(16);
+  let key = generateRandomKey(6);
   userKeys.set(key, userID);
   return key;
 }
