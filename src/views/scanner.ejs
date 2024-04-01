@@ -15,7 +15,7 @@
   function onScanSuccess(barCodeMessage) {
     console.log(`Barcode detected: ${barCodeMessage}`);
     
-    fetch(`/api/activity/invite/${barCodeMessage}/<%= id %>`, {method: "POST"})
+    fetch(`/api/activity/invite/${barCodeMessage}/<%- id %>`, {method: "POST"})
       .then(res=> {
         alert("Invite user succeed!");
       })
