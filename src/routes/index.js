@@ -59,8 +59,12 @@ router.get("/scanner/:id", async (req, res) => {
 });
 
 router.get("/barcode", async (req, res) => {
+  const userID = req.session.userID;
+  const key = users.set(userID)
+  console.log(key);
   res.render("barcode", {
-    title: "Barcode"
+    title: "Barcode",
+    key: key
   });
 });
 
