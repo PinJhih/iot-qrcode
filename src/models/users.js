@@ -1,4 +1,5 @@
 const db = require("../utils/database");
+const bcrypt = require("bcrypt");
 
 async function getName(id) {
   let sql = `SELECT * FROM user WHERE id = '${id}'`;
@@ -8,7 +9,8 @@ async function getName(id) {
 }
 
 async function addUser(name, password) {
-  let sql = `INSERT INTO user (name, password) VALUES ('${name}', '${password}');`;
+  const hash = bcrypt.hashSync(password, 10);
+  let sql = `INSERT INTO user (name, password) VALUES ('${name}', '${hash}');`;
   db.query(sql);
 }
 
@@ -20,7 +22,7 @@ async function login(name, password) {
   }
 
   let user = res[0];
-  if (password == user.password) {
+  if (bcrypt.compareSync(password, user.password)) {
     return user.id;
   } else {
     return undefined;
