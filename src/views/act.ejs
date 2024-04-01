@@ -17,6 +17,8 @@
                 </div>
                 <div class="modal-footer">
                     <% if (owner) { %>
+                        <button type="button" class="btn btn-secondary"
+                        onclick='location.href="/scanner/<%= activity.id %>"'>Scan</button>
                         <button type="button" class="btn btn-secondary btn-exit" data-bs-dismiss="modal"
                             onclick="DeleteActivity(<%= activity.id %>)">Delete</button>
                     <% } else { %>
